@@ -1,0 +1,4 @@
+.rgba-fail { color: rgba(0, 0, 0, 0.3); background-color: #FFFFFF; }
+.hex8-fail { color: #FFFFFF80; background-color: #FFFFFF; }
+.bg-shorthand-fail { background: url(bg.png) no-repeat #FFFFFF; color: #EEEEEE; }
+.inherited-only { color: #777777; }
