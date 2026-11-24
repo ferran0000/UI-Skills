@@ -37,7 +37,6 @@ html { scroll-padding-top: 72px; }
   outline-offset: 2px;
 }
 @media (prefers-reduced-motion: reduce) {
-  /* Note: avoid breaking JS listeners that depend on transitionend where needed */
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
 }
 ```

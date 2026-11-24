@@ -10,7 +10,7 @@
 | **フォーム・文言** | GOV.UK Design System | https://design-system.service.gov.uk/ | ラベルと常時表示ヒントテキストの分離、エラーサマリー＆インラインエラー、動詞＋目的語のボタン文言 |
 | **UXリサーチ・表** | Nielsen Norman Group (NN/g) | https://www.nngroup.com/ | 10ユーザビリティヒューリスティクス、レイヤーケーキ型スキャン、応答時間（0.1s/1s/10s）、データテーブル設計 |
 | **サーフェス・色** | Material Design 3 | https://m3.material.io/ | セマンティックカラーロール、サーフェスによる階層表現、ダークテーマ設計 |
-| **データテーブル** | Dell Design System — Table | https://www.delldesignsystem.com/ | 数値右揃え・定性数値左揃え・ヘッダー整列一致・アクション集約 |
+| **データテーブル** | Dell Design System - Table | https://www.delldesignsystem.com/ | 数値右揃え・定性数値左揃え・ヘッダー整列一致・アクション集約 |
 | **スライド設計** | Penn State Assertion-Evidence Approach | https://www.assertion-evidence.com/ | 主張見出し（Assertion）＋視覚的証拠（Evidence）、スピーカーノート分離 |
 | **UI実践戦術** | Refactoring UI | https://www.refactoringui.com/ | 視覚的階層、余白の近接関係、アクション3階層 |
 | **認知心理法則** | Laws of UX | https://lawsofux.com/ | フィッツの法則、ヒックの法則、ヤコブの法則、ポステルの法則、ドハティのしきい値 |

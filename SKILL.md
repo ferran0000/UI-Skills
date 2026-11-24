@@ -1,15 +1,17 @@
 ---
-name: ui-ux-design
+name: ui-ux-design-v2
 description: >
-  文書（Markdown・仕様書・マニュアル・Marpスライド構成案）および Webサイト・Webアプリ（HTML/CSS）の
+  文書（Markdown・仕様書・マニュアル・Marpスライド構成案）、Webサイト・Webアプリ（HTML/CSS）、
+  およびアプリ画面案・UIモックアップ・スクリーンショット（JPEG/PNG画像）の
   UI/UXデザイン設計・新規生成・既存物レビューを行う際に発動するスキル。
   視覚階層、日本語タイポグラフィ、WCAG 2.2 Level AA 主要項目、フォーム、インタラクション、
   ダークモード、AIチャットUIの改善と、カバレッジ明示付きの機械判定・証拠義務付き自己評価を提供する。
 ---
 
-# UI/UX Design Skill (Core Router & Workflow — v1.2)
+# UI/UX Design Skill (Core Router & Workflow - v1.3)
 
 ## 1. 権威順序（ルール衝突時の優先順位）
+
 ルール同士が矛盾した場合は、上位を優先する。
 
 1. **法令・アクセシビリティ基準**: WCAG 2.2 Level AA 主要項目準拠、ダークパターン禁止
@@ -24,6 +26,7 @@ description: >
 4. **個別テクニック (`tactics/*.md`)**: 再現性の高いベストプラクティス。文脈や上位ルールにより調整可能
 
 ### 既存DS探索と衝突調停パターン（2位と1位が衝突した場合）
+
 - **既存DSの探索手順**: 対象プロジェクトに `tokens.css` / `variables.css` / `tailwind.config.*` / 既存CSSがある場合、先に色・余白・フォント・ボタンスタイルを抽出して従う。
 - **ブランドカラーが AA 未満の調停パターン**:
   1. **背景側で調整**: ブランド色そのものは維持し、背景を白/濃色側へ寄せて 4.5:1 以上を確保する。
@@ -40,16 +43,18 @@ description: >
 | 軸 | 選択肢 | ロード・挙動への影響 |
 | :--- | :--- | :--- |
 | **A. タスク種別** | `新規生成` / `既存物レビュー` | 既存物レビュー時は Phase 2 をスキップし「4. 既存物レビュー専用フロー」へ進む |
-| **B. 出力媒体** | `Markdown・文書` / `HTML・WebUI` / `Marpスライド構成案` | 制御可能な範囲を決定（Markdownでは見出し・構造・文言ルールのみ適用） |
+| **B. 出力媒体** | `Markdown・文書` / `HTML・WebUI` / `Marpスライド構成案` / `画像（JPEG/PNG・UIモックアップ）` | 制御可能な範囲を決定（Markdownでは構造・文言のみ、画像では視覚設計・プロンプト・ピクセル検証を適用） |
 | **C. 用途・密度** | `閲覧中心` / `操作・入力中心` / `高密度業務ツール` / `AIチャットUI` | 主＋副モジュールの複数合成を許可 |
 | **D. リスク・既存DS** | `該当なし` / `不可逆・金銭操作あり` / `既存DSあり` | 破壊的操作ガード・既存DS先行探索フラグをON |
 
 ### モジュールマッピング表（主＋副の合成可）
-- **Markdown / 仕様書 / ドキュメント** → `tactics/mod-doc.md`
-- **Webサイト / LP / Webアプリ（共通）** → `tactics/mod-visual-a11y.md` + `tokens/design-tokens.css`（照合用: `tokens/design-tokens.json`）
-- **フォーム / 操作UI / 状態遷移あり** → + `tactics/mod-interaction-forms.md`
-- **プレゼンスライド（Markdown/Marp構成案）** → `tactics/mod-slide.md` + `tactics/mod-doc.md`
-- **高密度業務ツール / AIチャットUI** → + `tactics/mod-pro-ai.md`
+
+- **Markdown / 仕様書 / ドキュメント** -> `tactics/mod-doc.md`
+- **Webサイト / LP / Webアプリ（共通）** -> `tactics/mod-visual-a11y.md` + `tokens/design-tokens.css`（照合用: `tokens/design-tokens.json`）
+- **アプリ画面案・UIモックアップ画像生成 / スクリーンショットレビュー（JPEG / PNG）** -> `tactics/mod-image-ui.md` + `tokens/design-tokens.json`（必要に応じて `mod-visual-a11y.md` / `mod-interaction-forms.md` / `mod-pro-ai.md` を合成）
+- **フォーム / 操作UI / 状態遷移あり** -> + `tactics/mod-interaction-forms.md`
+- **プレゼンスライド（Markdown/Marp構成案）** -> `tactics/mod-slide.md` + `tactics/mod-doc.md`
+- **高密度業務ツール / AIチャットUI** -> + `tactics/mod-pro-ai.md`
 
 ---
 
@@ -57,42 +62,48 @@ description: >
 
 1. Phase 1 で選定した `tactics/` モジュールを読み込む。
 2. **既存DSがない HTML/CSS 生成時**は、`tokens/design-tokens.css` の `:root` / ダークモード変数をそのまま組み込み、`tokens/design-tokens.json` の `verified_pairs` に列挙された組み合わせのみを使用する。
-3. 初稿を生成したら、ユーザーへ提示する前に **Phase 3（自己評価・改善ループ）** へ進む。
+3. **画像（JPEG / PNG）でアプリ画面案を生成する場合**は、`tactics/mod-image-ui.md` に沿って画面比率・要素数（3〜4ブロック）・Primary CTA（1つ）・検証済み配色・短い日本語ラベルを構造化したプロンプトを作成し、画像を生成する。
+4. 初稿（コード・文書・生成画像）ができたら、ユーザーへ提示する前に **Phase 3（自己評価・改善ループ）** へ進む。
 
 ---
 
 ## 4. 既存物レビュー専用フロー（診断ファースト）
 
-対象が既存の文書・コード・UIの場合は、元の意図と既存デザインシステムを尊重し、全面書き換えの前に診断レポートを提示する。
+対象が既存の文書・コード・UI画像（JPEG / PNG スクリーンショットやカンプ）の場合は、元の意図と既存デザインシステムを尊重し、全面書き換えの前に診断レポートを提示する。
 
 1. Phase 3 の評価プロセス（機械判定＋`evaluation/` ロードによる診断）を実行する。
 2. **診断レポート**を提示する：
    - **Blocker（最優先修正）**: 該当箇所・根拠・困るユーザー像・最小修正案
    - **Major / Minor（改善推奨）**: 同上
-   - **機械判定カバレッジ＆未検証項目**: スキップされた要素と、コードだけでは判定できない視覚・実機確認項目
-3. ユーザーに適用範囲を確認してから書き換えを行う（一括修正を明示されている場合は、Blocker と安全な Major のみを適用する）。
+   - **機械判定カバレッジ＆未検証項目**: スキップされた要素と、コード／静止画だけでは判定できない視覚・実装・実機確認項目
+3. ユーザーに適用範囲を確認してから書き換え・再生成を行う（一括修正を明示されている場合は、Blocker と安全な Major のみを適用する）。
 
 ---
 
 ## 5. Phase 3: 自己評価＆改善ループ
 
 ### ステップ 3-1: 評価ファイルの遅延ロード
+
 - 共通必須: `evaluation/blockers.md`
 - Web / HTML / CSS: `evaluation/checklist-web.md`
 - 文書 / Markdown / スライド: `evaluation/checklist-doc.md`
+- 画像（JPEG / PNG・UIモックアップ / スクリーンショット）: `evaluation/checklist-image.md`
 
 ### ステップ 3-2: 3区分による検査
+
 1. **機械判定（Automated）**:
-   - シェル実行可能な環境では `python3 scripts/ui_ux_checker.py <target> --json`（新規Web生成時は `--strict-tokens`、仕様書時は `--doc-type spec` 併用）を実行する。
+   - **Web / 文書**: シェル実行可能な環境では `python3 scripts/ui_ux_checker.py <target> --json`（新規Web生成時は `--strict-tokens`、仕様書時は `--doc-type spec` 併用）を実行する。
+   - **画像（JPEG / PNG）**: シェル実行可能かつ Pillow が利用できる環境では `python3 scripts/ui_ux_checker.py <target.png> --contrast-box x1,y1,x2,y2:label:4.5 --json`（または `--sample-pair fg_x,fg_y:bg_x,bg_y:label:4.5`）を実行し、解像度・代表色パレット・余白率概算・指定領域の実測コントラスト比を取得する。Pillow 未導入やシェル不可環境では機械判定を `未検証` として明示する。
    - **シェル実行不可の環境ではコントラスト比を暗算しない**。`tokens/design-tokens.json` の `verified_pairs` にある組み合わせのみ使用していれば照合により `Pass`、それ以外の色ペアは `未検証` として記録する。
    - ※ React (`.jsx`/`.tsx`) や Tailwind 等のビルド前コードはチェッカー非対応のため、機械判定は対象外（`未検証`）として明記し、レンダリング後の HTML/CSS または静的原則チェックで補完する。
-2. **LLM原則判断（Heuristic）**:
+2. **LLM原則判断（Heuristic / 視覚評価）**:
    - **サブエージェントや別コンテキストが利用可能な環境では、生成役とは別コンテキストで本評価を実行することを必須とする**（自己評価バイアス低減）。
-   - チェックリストの全観点を順番に探索し、問題がない観点は根拠を添えてそのまま `Pass`（0件）と記録する。
-3. **未検証（Unverified）**: レンダリング画像や実機操作なしに判定できない視覚・体感項目は `未検証` として記録する。
+   - チェックリストの全観点を順番に探索し、問題がない観点は根拠を添えてそのまま `Pass`（0件）と記録する。画像の場合は実際に画像を視認して視覚階層・近接・文字崩れ・見切れを証拠付きで評価する。
+3. **未検証（Unverified）**: レンダリング画像や実機操作・コード構造なしに判定できない項目は `未検証` として記録する（画像時は `UNV-I1`〜`UNV-I3` を必須記載）。
 
 ### ステップ 3-3: 修正とループ終了条件
-- **Blocker (`BLK-01`〜`BLK-07`) が 1 件以上ある場合**: 修正を実施し、リグレッションを含めて再評価する。
+
+- **Blocker (`BLK-01`〜`BLK-07`) が 1 件以上ある場合**: 修正（画像生成時はプロンプト修正＋再生成）を実施し、リグレッションを含めて再評価する。
 - **ループ上限**: 最大 **2回**（過剰修正とトークン浪費を防ぐ上限）。
 - **終了条件**: Blocker = 0 件になったら出力フェーズへ進む。2回修正しても Blocker が残る場合は、残存する Blocker と理由を明記してユーザーへ引き渡す。
 
@@ -101,9 +112,10 @@ description: >
 ## 6. 出力フォーマットと監査ログ（新規生成時）
 
 チャット上の可読性と評価の監査可能性を両立するため、以下に従う：
-1. **生成した成果物**
+
+1. **生成した成果物**（コード・文書・生成画像）
 2. **チャット末尾の検証サマリー**:
-   - `機械判定`: **対象範囲内では** Blocker 0件 / Major X件（色ペア評価 A/B 件、スキップ C 件）
+   - `機械判定`: **対象範囲内では** Blocker 0件 / Major X件（色ペア評価 A/B 件、スキップ C 件。画像時は解像度・推定余白率も併記）
    - `原則チェック`: Major X件 / Minor Y件（修正ループ N回）。LLM判断 Blocker（`BLK-01`, `BLK-02`, `BLK-06`）の Pass 根拠を各1行で併記。
-   - `未検証項目`: スキップされた要素＋実画面レンダリング・実測速度・実機操作性
+   - `未検証項目`: スキップされた要素＋媒体ごとの未検証項目（Web: `UNV-W*` / 文書: `UNV-D*` / 画像: `UNV-I*`）
 3. **監査ログ保存（ファイル出力可能な環境）**: 全観点の判定と根拠を `review-log.md` へ書き出して残す。

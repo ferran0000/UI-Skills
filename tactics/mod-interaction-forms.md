@@ -32,26 +32,6 @@
   - すべての入力欄の直上に短く直接的な `<label for>` を常時表示する。
   - 入力形式の例や利用目的の補足は、ラベルと入力欄の間に **常時表示される短い1文のヒントテキスト（`aria-describedby` で紐付け）** を配置する。
 
-### Good Pattern: GOV.UK式 フォーム（通常時 & エラー時）
-```html
-<!-- 通常時（エラー要素はまだ出力しない） -->
-<div class="field">
-  <label for="user-email">メールアドレス</label>
-  <p id="user-email-hint" class="hint">確認コードの送信に使用します（例: name@example.com）</p>
-  <input id="user-email" name="email" type="email" autocomplete="email"
-         aria-describedby="user-email-hint" required>
-</div>
-
-<!-- エラー発生時（フォーム上部にError Summaryを出し、該当欄へエラー文言を追加して紐付ける） -->
-<div class="field field--error">
-  <label for="user-email">メールアドレス</label>
-  <p id="user-email-hint" class="hint">確認コードの送信に使用します（例: name@example.com）</p>
-  <p id="user-email-error" class="error">正しい形式でメールアドレスを入力してください</p>
-  <input id="user-email" name="email" type="email" autocomplete="email"
-         aria-describedby="user-email-hint user-email-error" aria-invalid="true" required>
-</div>
-```
-
 ## 3. 5つのUI状態とレスポンス時間
 - **INT-10 5状態の網羅設計**:
   1. **Ideal（正常表示）**
