@@ -1,0 +1,197 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "meta": {
+    "version": "1.0.0",
+    "wcag_target": "WCAG 2.2 Level AA",
+    "notes": "All paired foreground/background colors are mathematically verified to meet WCAG 2.2 AA (text >= 4.5:1, non-text/UI >= 3.0:1)."
+  },
+  "spacing": {
+    "unit": "4px/8px grid",
+    "scale": {
+      "space-1": "4px",
+      "space-2": "8px",
+      "space-3": "12px",
+      "space-4": "16px",
+      "space-6": "24px",
+      "space-8": "32px",
+      "space-12": "48px",
+      "space-16": "64px"
+    },
+    "rules": {
+      "intra_group_max": "space-2",
+      "inter_group_min": "space-4",
+      "section_gap_min": "space-8",
+      "mobile_page_padding": "space-4"
+    }
+  },
+  "typography": {
+    "font_family_ja": "'BIZ UDPGothic', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Noto Sans JP', sans-serif",
+    "font_family_mono": "'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular, monospace",
+    "scale": {
+      "text-xs": "12px",
+      "text-sm": "14px",
+      "text-base": "16px",
+      "text-lg": "18px",
+      "text-xl": "20px",
+      "text-2xl": "24px",
+      "text-3xl": "32px"
+    },
+    "line_height": {
+      "heading": 1.35,
+      "body_ja_standard": 1.7,
+      "body_ja_relaxed": 1.75,
+      "body_en": 1.5,
+      "ui_control": 1.4
+    },
+    "measure_max_width": {
+      "ja_body": "42em",
+      "en_body": "68ch"
+    }
+  },
+  "targets": {
+    "wcag_aa_min_px": 24,
+    "recommended_touch_px": 44
+  },
+  "colors": {
+    "light": {
+      "bg-page": "#FFFFFF",
+      "bg-surface": "#F8FAFC",
+      "bg-subtle": "#F1F5F9",
+      "text-primary": "#0F172A",
+      "text-secondary": "#475569",
+      "text-muted": "#526071",
+      "border-default": "#CBD5E1",
+      "border-strong": "#64748B",
+      "accent-primary": "#1D4ED8",
+      "accent-primary-hover": "#1E40AF",
+      "on-accent": "#FFFFFF",
+      "danger": "#B91C1C",
+      "on-danger": "#FFFFFF",
+      "success": "#15803D",
+      "warning-bg": "#FEF3C7",
+      "warning-text": "#92400E"
+    },
+    "dark": {
+      "bg-page": "#0F172A",
+      "bg-surface": "#1E293B",
+      "bg-subtle": "#334155",
+      "text-primary": "#F8FAFC",
+      "text-secondary": "#CBD5E1",
+      "text-muted": "#94A3B8",
+      "border-default": "#475569",
+      "border-strong": "#94A3B8",
+      "accent-primary": "#60A5FA",
+      "accent-primary-hover": "#93C5FD",
+      "on-accent": "#0F172A",
+      "danger": "#F87171",
+      "on-danger": "#0F172A",
+      "success": "#4ADE80",
+      "warning-bg": "#451A03",
+      "warning-text": "#FDE68A"
+    },
+    "verified_pairs": [
+      {
+        "theme": "light",
+        "fg": "text-primary",
+        "bg": "bg-page",
+        "min_ratio": 4.5
+      },
+      {
+        "theme": "light",
+        "fg": "text-secondary",
+        "bg": "bg-page",
+        "min_ratio": 4.5
+      },
+      {
+        "theme": "light",
+        "fg": "text-muted",
+        "bg": "bg-page",
+        "min_ratio": 4.5
+      },
+      {
+        "theme": "light",
+        "fg": "text-primary",
+        "bg": "bg-surface",
+        "min_ratio": 4.5
+      },
+      {
+        "theme": "light",
+        "fg": "text-secondary",
+        "bg": "bg-surface",
+        "min_ratio": 4.5
+      },
+      {
+        "theme": "light",
+        "fg": "on-accent",
+        "bg": "accent-primary",
+        "min_ratio": 4.5
+      },
+      {
+        "theme": "light",
+        "fg": "on-danger",
+        "bg": "danger",
+        "min_ratio": 4.5
+      },
+      {
+        "theme": "light",
+        "fg": "warning-text",
+        "bg": "warning-bg",
+        "min_ratio": 4.5
+      },
+      {
+        "theme": "light",
+        "fg": "border-strong",
+        "bg": "bg-page",
+        "min_ratio": 3.0
+      },
+      {
+        "theme": "dark",
+        "fg": "text-primary",
+        "bg": "bg-page",
+        "min_ratio": 4.5
+      },
+      {
+        "theme": "dark",
+        "fg": "text-secondary",
+        "bg": "bg-page",
+        "min_ratio": 4.5
+      },
+      {
+        "theme": "dark",
+        "fg": "text-muted",
+        "bg": "bg-page",
+        "min_ratio": 4.5
+      },
+      {
+        "theme": "dark",
+        "fg": "text-primary",
+        "bg": "bg-surface",
+        "min_ratio": 4.5
+      },
+      {
+        "theme": "dark",
+        "fg": "on-accent",
+        "bg": "accent-primary",
+        "min_ratio": 4.5
+      },
+      {
+        "theme": "dark",
+        "fg": "on-danger",
+        "bg": "danger",
+        "min_ratio": 4.5
+      },
+      {
+        "theme": "dark",
+        "fg": "warning-text",
+        "bg": "warning-bg",
+        "min_ratio": 4.5
+      },
+      {
+        "theme": "dark",
+        "fg": "border-strong",
+        "bg": "bg-page",
+        "min_ratio": 3.0
+      }
+    ]
+  }
+}

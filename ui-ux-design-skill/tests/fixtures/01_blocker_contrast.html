@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>コントラスト欠陥サンプル</title>
+  <style>
+    .bad-text { color: #94A3B8; background-color: #FFFFFF; font-size: 16px; }
+    button:focus { outline: none; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>お知らせ</h1>
+    <p class="bad-text">この文字は背景に対してコントラスト比がAA基準（4.5:1）を下回っています。</p>
+    <button style="width: 18px; height: 18px;">x</button>
+  </main>
+</body>
+</html>
